@@ -16,7 +16,8 @@ bin/
 *.jar
 *.war
 *.ear
-
+# Исключение для конкретного файла
+!Photo_identifier.jar
 # Системные файлы
 .DS_Store
 Thumbs.db

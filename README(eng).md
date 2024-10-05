@@ -13,7 +13,7 @@ This application checks the user's photo at Windows startup and compares it with
 ## Installation
 1. Download the folder from the repository:
    ```bash
-   git clone https://github.com/username/photo-verification-app.git
+  https://github.com/shamanbel/PhotoID.git
    
 2. Place it in a convenient location.
 3. Run the file "start_Photo_identifier.bat".

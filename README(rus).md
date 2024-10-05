@@ -18,7 +18,7 @@
 1. Скачайте с репозитория папку 
 
    ```bash
-   git clone https://github.com/shamanbel/PhotoID/Photo_identifier_default.git
+   https://github.com/shamanbel/PhotoID.git
    
 2. Разместите ее в удобном для Вас месте.
 3. Запустите "start_Photo_identifier.bat". 
