@@ -11,9 +11,8 @@ This application checks the user's photo at Windows startup and compares it with
 - Internet connection (for sending emails)-->
 
 ## Installation
-1. Download the folder from the repository:
-  
-  https://github.com/shamanbel/PhotoID.git
+1. Download the folder:    Photo_identifier_default
+    from the repository:  https://github.com/shamanbel/PhotoID.git
    
 2. Place it in a convenient location.
 3. Run the file "start_Photo_identifier.bat".
