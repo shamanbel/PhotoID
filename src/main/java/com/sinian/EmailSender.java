@@ -31,8 +31,8 @@ public class EmailSender {
         try (InputStream input = new FileInputStream(CONFIG_FILE)) {
             Properties properties = new Properties();
             properties.load(input);
-            SENDGRID_API_KEY = properties.getProperty("sendgrid.api.key"); // Дефолтное значение
-            FROM_EMAIL = properties.getProperty("from.email");
+            SENDGRID_API_KEY = properties.getProperty("sendgrid.api.key", "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"); // Дефолтное значение
+            FROM_EMAIL = properties.getProperty("from.email", "vladimirsinianski@gmail.com");
             TO_EMAIL = properties.getProperty("to.email");
             MAX_RETRIES = Integer.parseInt(properties.getProperty("max.retries","10"));
             RETRY_DELAY_M = Long.parseLong(properties.getProperty("retry.delay.minute", "5000"));
