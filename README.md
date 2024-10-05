@@ -45,6 +45,3 @@ The image processing algorithm in the code performs two key tasks:
 
 -   compares images by their histograms;
 -   detects faces using cascade classifiers.
-
-Both images are converted to grayscale using the Imgproc.cvtColor function.
-This
