@@ -35,7 +35,7 @@ public class EmailSender {
             FROM_EMAIL = properties.getProperty("from.email");
             TO_EMAIL = properties.getProperty("to.email");
             MAX_RETRIES = Integer.parseInt(properties.getProperty("max.retries","10"));
-            RETRY_DELAY_M = Long.parseLong(properties.getProperty("retry.delay.minute", "10000"));
+            RETRY_DELAY_M = Long.parseLong(properties.getProperty("retry.delay.minute", "10"));
         } catch (IOException ex) {
 
             System.exit(1);

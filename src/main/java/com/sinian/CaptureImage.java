@@ -46,31 +46,6 @@ public class CaptureImage {
             return null;
         }
     }
-    public static void takePhoto(String savePath) {
-        VideoCapture camera = new VideoCapture(0);
-        if (!camera.isOpened()) {
-            System.out.println("Error: Camera not detected.");
-            return;
-        }
-
-        Mat frame = new Mat();
-        camera.read(frame);
-        if (frame.empty()) {
-            System.out.println("Error: No image captured.");
-            return;
-        }
-        File file = new File(savePath);
-        file.getParentFile().mkdirs();
-        boolean result = Imgcodecs.imwrite(savePath, frame);
-        if (result) {
-            System.out.println("Photo taken and saved to " + savePath);
-        } else {
-            System.out.println("Error: Could not save the photo.");
-        }
-
-        camera.release();
-    }
-
 }
 
 
