@@ -11,9 +11,19 @@ This application checks the user's photo at Windows startup and compares it with
 - Internet connection (for sending emails)-->
 
 ## Installation
-1. Download the folder:    Photo_identifier_default
-    from the repository:  https://github.com/shamanbel/PhotoID.git
-   
+1. You can download the folder `Photo_identifier_default` from the repository by following these steps:
+
+- Go to the repository: [https://github.com/shamanbel/PhotoID.git](https://github.com/shamanbel/PhotoID.git)
+- Navigate to the `Photo_identifier_default` folder.
+- Click on the green "Code" button in the top right.
+- Select "Download ZIP" to download the entire repository as a ZIP file.
+- After downloading, extract the ZIP file and locate the `Photo_identifier_default` folder inside.
+
+Alternatively, you can clone the repository using Git:
+```bash
+git clone https://github.com/shamanbel/PhotoID.git
+```
+
 2. Place it in a convenient location.
 3. Run the file "start_Photo_identifier.bat".
 
@@ -35,6 +45,3 @@ The image processing algorithm in the code performs two key tasks:
 
 -   compares images by their histograms;
 -   detects faces using cascade classifiers.
-
-Both images are converted to grayscale using the Imgproc.cvtColor function.
-This
