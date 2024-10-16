@@ -59,14 +59,13 @@
                         </goals>
                         <configuration>
                             <relocations>
-                                <!-- Переименование пакетов для избежания конфликтов -->
-                            </relocations>
+                              </relocations>
                             <filters>
                                 <filter>
                                     <artifact>*:*</artifact>
                                     <includes>
                                         <include>**/*.class</include>
-                                        <include>**/*.xml</include> <!-- Убедитесь, что XML включены в сборку -->
+                                        <include>**/*.xml</include>
                                     </includes>
                                 </filter>
                             </filters>

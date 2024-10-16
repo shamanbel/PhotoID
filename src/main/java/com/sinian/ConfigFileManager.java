@@ -8,14 +8,12 @@ import java.util.Properties;
 
 public class ConfigFileManager {
     private static final String CONFIG_FILE_PATH = "src/main/resources/config.properties";
-    //"src/main/resources/config.properties"
-    // Метод для проверки существования файла конфигурации
+
     public boolean isConfigFileExists() {
         File configFile = new File(CONFIG_FILE_PATH);
         return configFile.exists();
     }
 
-    // Метод для создания и сохранения файла конфигурации
     public void createConfigFile(Properties properties) {
         try (FileOutputStream out = new FileOutputStream(CONFIG_FILE_PATH)) {
             properties.store(out, "User Configuration");

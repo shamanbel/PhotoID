@@ -14,7 +14,7 @@ public class CaptureImage {
     static {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
     }
-    // Метод для захвата изображения с камеры
+
     // Method for capturing image from camera
     public static String captureImage() {
         VideoCapture camera = new VideoCapture(0);
@@ -59,12 +59,8 @@ public class CaptureImage {
             System.out.println("Error: No image captured.");
             return;
         }
-
-        // Убедитесь, что директория существует
         File file = new File(savePath);
         file.getParentFile().mkdirs();
-
-        // Сохраните изображение
         boolean result = Imgcodecs.imwrite(savePath, frame);
         if (result) {
             System.out.println("Photo taken and saved to " + savePath);

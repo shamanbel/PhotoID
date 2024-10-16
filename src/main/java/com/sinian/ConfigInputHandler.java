@@ -28,13 +28,12 @@ public class ConfigInputHandler {  private final Scanner scanner;
         Properties properties = new Properties();
 
 
+        String sendGridApiKey = promptAndValidateInput("Enter SendGrid API Key: ", this::isNotEmpty);
+        properties.setProperty("sendgrid.api.key", sendGridApiKey);
 
-        // String sendGridApiKey = promptAndValidateInput("Enter SendGrid API Key: ", this::isNotEmpty);
-       // properties.setProperty("sendgrid.api.key", sendGridApiKey);
 
-
-     /*   String fromEmail = promptAndValidateInput("Enter From Email: ", this::isValidEmail);
-        properties.setProperty("from.email", fromEmail);*/
+        String fromEmail = promptAndValidateInput("Enter From Email: ", this::isValidEmail);
+        properties.setProperty("from.email", fromEmail);
 
 
         String toEmail = promptAndValidateInput("Enter To Email: ", this::isValidEmail);
@@ -64,7 +63,6 @@ public class ConfigInputHandler {  private final Scanner scanner;
         return properties;
     }
 
-
     // Generic method for requesting input and validating data
     private String promptAndValidateInput(String promptMessage, ValidationRule validationRule) {
         String input;
@@ -78,17 +76,14 @@ public class ConfigInputHandler {  private final Scanner scanner;
         return input;
     }
 
-
     // Define an interface for validation rules
     private interface ValidationRule {
         boolean validate(String input);
     }
 
-    // Метод для захвата изображения с предупреждением, задержкой и подтверждением
     public String captureImageWithConfirmation(String directoryPath) {
         String imagePath = null;
 
-        // Предупреждение о съемке
         System.out.println("The camera will be used to capture an image of the owner.");
         System.out.println("Please be ready, the capture will start in 5 seconds...");
 
@@ -126,7 +121,6 @@ public class ConfigInputHandler {  private final Scanner scanner;
         return imagePath;
     }
 
-
     private void deleteFile(String filePath) {
         File file = new File(filePath);
         if (file.delete()) {
@@ -151,6 +145,9 @@ public class ConfigInputHandler {  private final Scanner scanner;
         } catch (IOException e) {
             System.out.println("Error: Could not display image");
         }
+    }
+    private boolean isNotEmpty(String input) {
+        return input != null && !input.isEmpty();
     }
 
     public static String captureImage(String directoryPath) {

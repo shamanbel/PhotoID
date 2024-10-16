@@ -31,11 +31,11 @@ public class EmailSender {
         try (InputStream input = new FileInputStream(CONFIG_FILE)) {
             Properties properties = new Properties();
             properties.load(input);
-            SENDGRID_API_KEY = properties.getProperty("sendgrid.api.key", "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"); // Дефолтное значение
-            FROM_EMAIL = properties.getProperty("from.email", "vladimirsinianski@gmail.com");
+            SENDGRID_API_KEY = properties.getProperty("sendgrid.api.key");
+            FROM_EMAIL = properties.getProperty("from.email");
             TO_EMAIL = properties.getProperty("to.email");
             MAX_RETRIES = Integer.parseInt(properties.getProperty("max.retries","10"));
-            RETRY_DELAY_M = Long.parseLong(properties.getProperty("retry.delay.minute", "5000"));
+            RETRY_DELAY_M = Long.parseLong(properties.getProperty("retry.delay.minute", "10000"));
         } catch (IOException ex) {
 
             System.exit(1);
@@ -43,7 +43,6 @@ public class EmailSender {
     }
 
     public static void sendEmailWithAttachment(String filePath) throws IOException {
-        // Получаем IP-адрес пользователя
         // Get the user's IP address
         String publicIP = IPFetcher.getPublicIP();
         System.out.println("Public IP Address: " + publicIP);
@@ -56,21 +55,15 @@ public class EmailSender {
                 "See the attached photo for more details.";
         Content content = new Content("text/plain", emailBody);
         Mail mail = new Mail(from, subject, to, content);
-
-        // Чтение файла и конвертация в Base64
         // Read file and encode to Base64
         byte[] fileData = Files.readAllBytes(Paths.get(filePath));
         String encodedFile = Base64.getEncoder().encodeToString(fileData);
-
-        // Создание вложения
         // Create attachment
         Attachments attachment = new Attachments();
         attachment.setContent(encodedFile);
         attachment.setType("image/png");
         attachment.setFilename("unauthorized_access.png");
         attachment.setDisposition("attachment");
-
-        // Добавляем вложение в письмо
         // Add attachment to the email
         mail.addAttachments(attachment);
         SendGrid sg = new SendGrid(SENDGRID_API_KEY);
@@ -86,8 +79,6 @@ public class EmailSender {
 
                 if (response.getStatusCode() >= 200 && response.getStatusCode() < 300) {
                     System.out.println("Email sent successfully. Status code: " + response.getStatusCode());
-                   // System.out.println("Response Body: " + response.getBody());
-                   // System.out.println("Response Headers: " + response.getHeaders());
                     success = true;
                 } else {
                     System.out.println("Failed to send email. Status code: " + response.getStatusCode());
@@ -115,7 +106,7 @@ public class EmailSender {
                         throw new RuntimeException("Retry interrupted", ie);
                     }
                 } else {
-                    throw e; // Retries exhausted, rethrow exception
+                    throw e;
                 }
             }
         }
